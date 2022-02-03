@@ -72,6 +72,7 @@ function Coin(x,y,r){
 
             //get the individual speeds and velocities and the angle of collisions
             var speed1 = Math.sqrt(coins[i].vx*coins[i].vx + coins[i].vy*coins[i].vy );
+<<<<<<< HEAD
 		    var speed2 = Math.sqrt(coins[j].vx*coins[j].vx + coins[j].vy*coins[j].vy);
 
 		    var direction1 = Math.atan2(coins[i].vy, coins[i].vx);
@@ -103,6 +104,37 @@ function Coin(x,y,r){
 			coins[j].y+=coins[j].vy;
 			coins[i].x+=coins[i].vx;
 			coins[i].y+=coins[i].vy;
+=======
+	    var speed2 = Math.sqrt(coins[j].vx*coins[j].vx + coins[j].vy*coins[j].vy);
+
+	    var direction1 = Math.atan2(coins[i].vy, coins[i].vx);
+	    var direction2 = Math.atan2(coins[j].vy, coins[j].vx);
+
+	    var velocityx_1 = speed1 * Math.cos(direction1 - collisionAngle);
+	    var velocityy_1 = speed1 * Math.sin(direction1 - collisionAngle);
+	    var velocityx_2 = speed2 * Math.cos(direction2 - collisionAngle);
+	    var velocityy_2 = speed2 * Math.sin(direction2 - collisionAngle);
+
+	    var final_velocityx_1 = velocityx_2;
+	    var final_velocityx_2 = velocityx_1;
+	    var final_velocityy_1 = velocityy_1;
+	    var final_velocityy_2 = velocityy_2;
+
+	    ball1_velocityx = Math.cos(collisionAngle) * final_velocityx_1 + Math.cos(collisionAngle + Math.PI/2) * final_velocityy_1;
+	    ball1_velocityy = Math.sin(collisionAngle) * final_velocityx_1 + Math.sin(collisionAngle + Math.PI/2) * final_velocityy_1;
+	    ball2_velocityx = Math.cos(collisionAngle) * final_velocityx_2 + Math.cos(collisionAngle + Math.PI/2) * final_velocityy_2;
+	    ball2_velocityy = Math.sin(collisionAngle) * final_velocityx_2 + Math.sin(collisionAngle + Math.PI/2) * final_velocityy_2;
+
+	    coins[i].vx = ball1_velocityx;
+	    coins[i].vy = ball1_velocityy;
+	    coins[j].vx = ball2_velocityx;
+	    coins[j].vy = ball2_velocityy;
+		
+		coins[j].x+=coins[j].vx;
+		coins[j].y+=coins[j].vy;
+		coins[i].x+=coins[i].vx;
+		coins[i].y+=coins[i].vy;
+>>>>>>> 9490b1d98c823a3bee6768b508904ac32fe7afc1
         }
     }
 }
